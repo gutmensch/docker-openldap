@@ -7,6 +7,8 @@ FROM bitnami/openldap:$IMAGE_VERSION
 ARG IMAGE_UID=2000
 
 COPY --from=certs /CA/certs/ldap/ /etc/ssl/certs/ldap/
+COPY schema/ /opt/bitnami/openldap/etc/schema/
+
 
 ENV LDAP_ENABLE_TLS=yes \
     LDAP_TLS_CERT_FILE=/etc/ssl/certs/server.crt \
